@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- ══ SEO ══════════════════════════════════════════════════════════════ -->
+  <title>Moe Kyaw Aung — Senior Android Developer | Flutter Portfolio V5</title>
+  <meta name="description" content="Senior Android Developer with ~12 years experience. Kotlin · Jetpack Compose · Flutter · Firebase · CI/CD · Clean Architecture. Based in Myanmar 🇲🇲 & Bangkok 🇹🇭. 82+ certificates, 43 GitHub accounts, 38+ live PWAs.">
+  <meta name="keywords" content="Moe Kyaw Aung, Android Developer, Flutter Developer, Kotlin, Jetpack Compose, Firebase, Myanmar Developer, Senior Developer, Mobile App Development, Clean Architecture, MVVM, CI/CD">
+  <meta name="author" content="Moe Kyaw Aung">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://moekyawaung-portfolio-v5.web.app">
+
+  <!-- ══ Open Graph ════════════════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://moekyawaung-portfolio-v5.web.app">
+  <meta property="og:title"       content="Moe Kyaw Aung — Senior Android Developer">
+  <meta property="og:description" content="12 years Android expertise. Kotlin · Jetpack Compose · Flutter · Firebase · CI/CD. Myanmar 🇲🇲 developer building production-quality mobile applications.">
+  <meta property="og:image"       content="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Moe Kyaw Aung Portfolio">
+
+  <!-- ══ Twitter Card ══════════════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Moe Kyaw Aung — Senior Android Developer">
+  <meta name="twitter:description" content="Kotlin · Jetpack Compose · Flutter · Firebase · 12 years experience · Myanmar 🇲🇲">
+  <meta name="twitter:image"       content="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png">
+
+  <!-- ══ PWA ═══════════════════════════════════════════════════════════════ -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#050510">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MKA Portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- ══ Favicons ═══════════════════════════════════════════════════════════ -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- ══ JSON-LD Structured Data ═══════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Moe Kyaw Aung",
+    "alternateName": "မိုးကျော်အောင်",
+    "jobTitle": "Senior Android Developer",
+    "description": "Senior Android Developer with nearly 12 years experience specializing in Kotlin, Jetpack Compose, Flutter, Firebase, and CI/CD pipelines.",
+    "url": "https://moekyawaung-portfolio-v5.web.app",
+    "image": "https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png",
+    "sameAs": [
+      "https://github.com/Dev-moe-kyawaung/",
+      "https://www.linkedin.com/in/moe-kyaw-aung-2653093a1",
+      "https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG",
+      "https://bsky.app/profile/moekyawaung96.bsky.social",
+      "https://gravatar.com/moekyawaung2026"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tachileik",
+      "addressCountry": "MM"
+    },
+    "knowsAbout": [
+      "Android Development", "Kotlin", "Jetpack Compose", "Flutter",
+      "Firebase", "CI/CD", "Clean Architecture", "MVVM", "MVI",
+      "Cybersecurity", "Machine Learning", "REST APIs"
+    ]
+  }
+  </script>
+
+  <!-- ══ Google Fonts Preload ═══════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- ══ Loading screen styles ══════════════════════════════════════════════ -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #050510;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow: hidden;
+    }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #050510;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading.hidden { opacity: 0; pointer-events: none; }
+
+    .loader-logo {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      background: linear-gradient(135deg, #00F5FF, #BF00FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 32px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-bar {
+      width: 240px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .loader-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00F5FF, #BF00FF);
+      border-radius: 1px;
+      animation: load 2s ease-in-out forwards;
+      box-shadow: 0 0 12px #00F5FF;
+    }
+
+    .loader-text {
+      margin-top: 16px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: rgba(152,152,176,0.6);
+      text-transform: uppercase;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes load {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <div class="loader-logo">MKA</div>
+    <div class="loader-bar">
+      <div class="loader-fill"></div>
+    </div>
+    <div class="loader-text">Initializing Portfolio...</div>
+  </div>
+
+  <!-- Flutter app -->
+  <script>
+    window.addEventListener('flutter-first-frame', function() {
+      const loader = document.getElementById('loading');
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(() => loader.remove(), 600);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
