@@ -1,3 +1,4 @@
+```markdown
 # 🚀 Moe Kyaw Aung — Flutter Portfolio V5
 
 <div align="center">
@@ -173,6 +174,21 @@ CODECOV_TOKEN       # codecov.io token
 
 ---
 
+## 🚧 New CI workflow added
+
+I've added a new workflow file: `.github/workflows/flutter-build.yml`.
+
+What it does:
+- Builds Web (CanvasKit) and uploads artifact `web-build`.
+- Builds Android APKs (split per ABI) and AAB, uploads artifact `android-build`.
+- Builds iOS on macOS runner using `--no-codesign` and uploads artifact `ios-build`.
+
+Notes:
+- The iOS job runs on macos-latest (GitHub macOS runners incur minutes on private repos).
+- This workflow does not perform signing. To enable Android signing in CI, add the keystore as a base64 secret `KEYSTORE_BASE64` and set `KEYSTORE_PASSWORD`, `KEY_ALIAS`, and `KEY_PASSWORD` in repository secrets; the workflow can be extended to decode the keystore and configure `key.properties` before building.
+
+---
+
 ## 📦 Tech Stack
 
 | Layer          | Technology                              |
@@ -215,3 +231,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 Made with 💙 Flutter · Firebase · GitHub Actions
 
 </div>
+```
