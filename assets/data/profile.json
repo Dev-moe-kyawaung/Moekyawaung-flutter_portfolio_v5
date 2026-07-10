@@ -1,0 +1,34 @@
+{
+  "name": "Moe Kyaw Aung",
+  "nameMyanmar": "မိုးကျော်အောင်",
+  "title": "Senior Android Developer",
+  "location": "Tachileik, Myanmar ↔ Bangkok, Thailand",
+  "philosophy": "Code with culture. Build with purpose.",
+  "currentProject": "MoekyawTranslator — AI Translation App",
+  "experience": "~12 Years",
+  "certificates": "82+",
+  "githubAccounts": 43,
+  "livePwas": 38,
+  "appsBuilt": 16,
+  "phone": ["+95 9 889 000 889", "+959 666 000 050"],
+  "gravatar": "https://gravatar.com/moekyawaung2026",
+  "avatar": "https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png",
+  "skills": {
+    "Android": ["Kotlin", "Jetpack Compose", "Android SDK", "MVVM/MVI", "Clean Architecture", "Coroutines & Flow"],
+    "Mobile": ["Flutter", "Dart"],
+    "Backend": ["Firebase Suite", "REST APIs", "Retrofit", "Room Database", "Python"],
+    "DevOps": ["GitHub Actions", "Azure DevOps", "Fastlane", "Docker"],
+    "Web": ["React/Next.js", "JavaScript/TypeScript", "HTML/CSS/PWA"],
+    "Security": ["Ethical Hacking", "Kali Linux", "OWASP Mobile"],
+    "AI": ["Claude API", "TensorFlow Lite", "ML Kit"]
+  },
+  "social": {
+    "github": "https://github.com/Dev-moe-kyawaung/",
+    "linkedin": "https://www.linkedin.com/in/moe-kyaw-aung-2653093a1",
+    "youtube": "https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG",
+    "bluesky": "https://bsky.app/profile/moekyawaung96.bsky.social",
+    "flickr": "https://www.flickr.com/people/204037451@N06",
+    "vimeo": "https://vimeo.com/user252414232",
+    "tumblr": "https://www.tumblr.com/moekyawaung"
+  }
+}
