@@ -1,0 +1,113 @@
+name: Flutter CI - build web & android & ios
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build-web:
+    name: Build Web (CanvasKit)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Cache pub packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build web (CanvasKit)
+        run: flutter build web --release --web-renderer canvaskit --pwa-strategy offline-first
+
+      - name: Archive web build
+        run: tar -czf web-build.tgz -C build web
+
+      - name: Upload web artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: web-build.tgz
+
+  build-android:
+    name: Build Android (APK & AAB)
+    runs-on: ubuntu-latest
+    needs: build-web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Cache pub packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APKs (split per ABI)
+        run: flutter build apk --release --split-per-abi
+
+      - name: Build AAB (app bundle)
+        run: flutter build appbundle --release
+
+      - name: Archive Android outputs
+        run: |
+          mkdir -p out/android
+          cp -r build/app/outputs/flutter-apk/* out/android/ || true
+          cp -r build/app/outputs/bundle/release/* out/android/ || true
+          tar -czf android-build.tgz -C out android
+
+      - name: Upload android artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build
+          path: android-build.tgz
+
+  build-ios:
+    name: Build iOS (no-codesign)
+    runs-on: macos-latest
+    needs: build-android
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS (no codesign)
+        run: flutter build ios --release --no-codesign
+
+      - name: Archive ios build directory
+        run: tar -czf ios-build.tgz -C build ios
+
+      - name: Upload ios artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: ios-build.tgz
